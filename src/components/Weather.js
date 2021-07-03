@@ -5,7 +5,6 @@ const Weather= () => {
 
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("")
-  const [mess, setMess] = useState("");
 
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
@@ -24,11 +23,11 @@ const Weather= () => {
   };
 
   const deny = (err) => {
-    return setMess(`Error: ${err.message}`)
+    return alert(`Error: ${err.message}. This app requires allow permissions`)
   };
 
   useEffect(()=>{
-    if (latitude !== 0 && longitude !== 0) {
+    if (latitude & longitude) {
       const logic = async () => {
         const url = `http://api.weatherapi.com/v1/current.json?key=0920a717352a45a78b311947210207&q=${latitude},${longitude}&aqi=no`;
         const weatherData = await fetch(url).then((res)=> res.json());
@@ -39,7 +38,7 @@ const Weather= () => {
         setDegrees(weatherData.current.temp_c);
         setFarhe(weatherData.current.temp_f);
 
-        // console.log(weatherData);
+        console.log(weatherData);
         // console.log(city);
       };
       logic();
@@ -62,12 +61,7 @@ const Weather= () => {
 
   return(
     <div>
-      <div>
-        <WeatherItem city={city} country={country} iconUrl={icon} desc={desc} deg={degrees} farhe={farhe}/>
-      </div>
-
-      <div><h2>{mess}</h2></div>
-      
+      <WeatherItem city={city} country={country} iconUrl={icon} desc={desc} deg={degrees} farhe={farhe}/>
     </div>
   )
   
