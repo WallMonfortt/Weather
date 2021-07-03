@@ -29,7 +29,7 @@ const Weather= () => {
   useEffect(()=>{
     if (latitude & longitude) {
       const logic = async () => {
-        const url = `http://api.weatherapi.com/v1/current.json?key=0920a717352a45a78b311947210207&q=${latitude},${longitude}&aqi=no`;
+        const url = `https://api.weatherapi.com/v1/current.json?key=0920a717352a45a78b311947210207&q=${latitude},${longitude}&aqi=no`;
         const weatherData = await fetch(url).then((res)=> res.json());
         setCity(weatherData.location.name);
         setCountry(weatherData.location.country);
