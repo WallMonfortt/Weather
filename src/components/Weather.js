@@ -19,7 +19,6 @@ const Weather= () => {
     const coords = ubication.coords;
     setLatitude(coords.latitude);
     setLongitude(coords.longitude);
-    return (latitude, longitude)
   };
 
   const deny = (err) => {
