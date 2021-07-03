@@ -28,7 +28,7 @@ const Weather= () => {
   };
 
   useEffect(()=>{
-    if (latitude && longitude !==0) {
+    if (latitude !== 0 && longitude !== 0) {
       const logic = async () => {
         const url = `http://api.weatherapi.com/v1/current.json?key=0920a717352a45a78b311947210207&q=${latitude},${longitude}&aqi=no`;
         const weatherData = await fetch(url).then((res)=> res.json());
@@ -39,8 +39,8 @@ const Weather= () => {
         setDegrees(weatherData.current.temp_c);
         setFarhe(weatherData.current.temp_f);
 
-        console.log(weatherData);
-        console.log(city);
+        // console.log(weatherData);
+        // console.log(city);
       };
       logic();
 
