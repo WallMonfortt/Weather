@@ -3,6 +3,43 @@
   align-items: center;
   height: 100vh;
   justify-content: center;
+  background: linear-gradient(#f84adb,#2ee0ff);
 }
 
+.box{
+  background: #ffffff;
+  padding: 30px 80px;
+  border-radius: 30px;
+  border: 2px solid;
+}
+
+h2{
+  font-size: 2em;
+  margin: 0;
+}
+
+p{
+  font-size: 1em;
+}
+
+p span{ 
+  font-size: 20px;
+  font-weight: bold;
+}
+
+button{
+  text-decoration: none;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #3dade6;
+  border-radius: 6px;
+  border: 2px solid #2438d1;
+}
+
+button:hover{
+  color: #1883ba;
+  background-color: #ffffff;
+}
 

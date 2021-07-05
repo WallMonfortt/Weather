@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import WeatherItem from "./WeatherItems"
 
+
 const Weather= () => {
 
   const [latitude, setLatitude] = useState("");
@@ -12,6 +13,8 @@ const Weather= () => {
   const [desc, setDesc] = useState("");
   const [degrees, setDegrees] = useState("");
   const [farhe, setFarhe] = useState("");
+  const [grades, setGrades] = useState("")
+  const [units, setUnits] = useState("°C")
   
 
   const allow = (ubication) => {
@@ -30,12 +33,13 @@ const Weather= () => {
       const logic = async () => {
         const url = `https://api.weatherapi.com/v1/current.json?key=0920a717352a45a78b311947210207&q=${latitude},${longitude}&aqi=no`;
         const weatherData = await fetch(url).then((res)=> res.json());
-        setCity(weatherData.location.name);
-        setCountry(weatherData.location.country);
-        setIcon(weatherData.current.condition.icon);
-        setDesc(weatherData.current.condition.text);
-        setDegrees(weatherData.current.temp_c);
-        setFarhe(weatherData.current.temp_f);
+          setCity(weatherData.location.name);
+          setCountry(weatherData.location.country);
+          setIcon(weatherData.current.condition.icon);
+          setDesc(weatherData.current.condition.text);
+          setGrades(weatherData.current.temp_c);
+          setDegrees(weatherData.current.temp_c);
+          setFarhe(weatherData.current.temp_f);
 
         console.log(weatherData);
         // console.log(city);
@@ -47,9 +51,18 @@ const Weather= () => {
   }, [latitude,longitude])
 
   const options = {
-    enableHighAccuracy: true, // Alta precisión
-		maximumAge: 0, // No queremos caché
-		// timeout: 15000
+    enableHighAccuracy: true,
+		maximumAge: 0, 
+  }
+
+  const change = () => {
+    if (units === "°C") {
+      setUnits("°F")
+      setGrades(farhe)
+    }else{
+      setUnits("°C")
+      setGrades(degrees)
+    }
   }
 
   
@@ -59,8 +72,9 @@ const Weather= () => {
   
 
   return(
-    <div>
-      <WeatherItem city={city} country={country} iconUrl={icon} desc={desc} deg={degrees} farhe={farhe}/>
+    <div className="box">
+      <WeatherItem city={city} country={country} iconUrl={icon} desc={desc} grades={grades} units={units}/>
+      <button onClick={change}>°C / °F </button>
     </div>
   )
   
