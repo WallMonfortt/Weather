@@ -41,8 +41,6 @@ const Weather= () => {
           setDegrees(weatherData.current.temp_c);
           setFarhe(weatherData.current.temp_f);
 
-        console.log(weatherData);
-        // console.log(city);
       };
       logic();
 
