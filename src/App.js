@@ -1,4 +1,5 @@
 import './App.css';
+import MainMenuHeader from "./components/MainMenuHeader"
 import Weather from "./components/Weather"
 
 function App() {
@@ -7,7 +8,8 @@ function App() {
 
   return (
     <div className="App">
-     <Weather />
+      <MainMenuHeader />
+      <Weather />
     </div>
   );
   }else{

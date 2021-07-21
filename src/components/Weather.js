@@ -15,6 +15,7 @@ const Weather= () => {
   const [farhe, setFarhe] = useState("");
   const [grades, setGrades] = useState("")
   const [units, setUnits] = useState("°C")
+  const [localTime, setLocalTime] = useState()
   
 
   const allow = (ubication) => {
@@ -33,6 +34,7 @@ const Weather= () => {
       const logic = async () => {
         const url = `https://api.weatherapi.com/v1/current.json?key=0920a717352a45a78b311947210207&q=${latitude},${longitude}&aqi=no`;
         const weatherData = await fetch(url).then((res)=> res.json());
+        console.log(weatherData);
           setCity(weatherData.location.name);
           setCountry(weatherData.location.country);
           setIcon(weatherData.current.condition.icon);
@@ -40,6 +42,7 @@ const Weather= () => {
           setGrades(weatherData.current.temp_c);
           setDegrees(weatherData.current.temp_c);
           setFarhe(weatherData.current.temp_f);
+          setLocalTime(weatherData.location.localtime);
 
       };
       logic();
@@ -71,8 +74,16 @@ const Weather= () => {
 
   return(
     <div className="box">
-      <WeatherItem city={city} country={country} iconUrl={icon} desc={desc} grades={grades} units={units}/>
-      <button onClick={change}>°C / °F </button>
+      <WeatherItem 
+        change={change} 
+        city={city} 
+        localTime={localTime} 
+        country={country} 
+        iconUrl={icon} 
+        desc={desc} 
+        grades={grades} 
+        units={units}/>
+      
     </div>
   )
   
