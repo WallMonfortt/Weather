@@ -34,8 +34,8 @@ const MainMenuHeader = () => {
   return (
     <div className="Main-Header">
       <div className="logos">
-        <a ><img height="60px" src={WM2} /></a>
-        <div ><img height="60px" src={WMonf} /></div>
+        <img height="60px" alt="logo"  src={WM2} />
+        <div ><img height="60px" alt="logo" src={WMonf} /></div>
       </div>
       <div className="search">
         <SearchBox onSearch={handleSearch} />
